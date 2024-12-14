@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import image from '/grilledchicken.jpg';
+
 import { Navbar } from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 
 export const Item = () => {
+  const image = "https://www.budgetbytes.com/wp-content/uploads/2024/06/Grilled-Chicken-V1-768x1024.jpeg";
   const navigate = useNavigate();
     const data = [{
         image: image, 

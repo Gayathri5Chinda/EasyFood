@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import image from '/grilledchicken.jpg';
 
 export const CartItem = () => {
-
+    const image = "https://www.budgetbytes.com/wp-content/uploads/2024/06/Grilled-Chicken-V1-768x1024.jpeg";
     const [number, setNumber] = useState(1); //number of item
 
 	const updateQuantity = (id: number, value: number) => {
