@@ -11,7 +11,6 @@ export const CartItem = () => {
 			
 	};
 
-    
     return <div className='mt-10 grid grid-cols-6'>
            <div className='col-span-1'>
         <img className = "w-56 h-44" src = {image}></img>
