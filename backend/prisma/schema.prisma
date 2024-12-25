@@ -14,19 +14,18 @@ datasource db {
 }
 
 model User {
-  userid Int @id @default(autoincrement())
-  name String?
+  id Int @id @default(autoincrement())
+  name String
   email String @unique
   password String
-  cartid Int?
-  cart Cart? @relation(fields: [cartid], references: [cartid])
-  
+  cart Cart?
 }
 
-model Food {
-  foodid Int @id @default(autoincrement())
+model Product {
+  id Int @id @default(autoincrement())
   foodItem String
   category String
+  cost Int
   vegornon Boolean @default(false)
   protein Int
   calories Int
@@ -34,12 +33,24 @@ model Food {
   sodium Int
   iron Int
   calcium Int
+  picture String?
+  cartItems CartItem[]
   
 }
 
 
 model Cart {
-  cartid Int @id @default(autoincrement())
-  userid Int 
-  User User[]
+  id Int @id @default(autoincrement())
+  userId Int  @unique
+  user User @relation(fields: [userId], references: [id])
+  cartItems CartItem[]
+}
+
+model CartItem {
+  id Int @id @default(autoincrement())
+  cartId Int
+  productId Int
+  quantity Int
+  cart Cart @relation(fields: [cartId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
 }
