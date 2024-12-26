@@ -1,4 +1,3 @@
-
 import { Hono } from 'hono'
 import { userRouter } from './routes/user'
 import { foodRouter } from './routes/food'
@@ -12,9 +11,6 @@ const app = new Hono<{
 
 app.route("/api/v1/user", userRouter);
 app.route("/api/v1/food", foodRouter);
-
-
-
 
 export default app
 
