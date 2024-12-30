@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { sign } from "hono/jwt";
+import { signinInput, signupInput } from "@gayathrichinda/easy-common";
+
 
 export const userRouter = new Hono<{
     Bindings : {
@@ -12,6 +14,13 @@ export const userRouter = new Hono<{
 
 userRouter.post('/signup', async (c) => {
     const body = await c.req.json();
+    const { success } = signupInput.safeParse(body);
+     if(!success){
+       c.status(411);
+       return c.json({
+         message: "Input not correct"
+       })
+     }
     const prisma = new PrismaClient({
       datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate())
@@ -48,6 +57,15 @@ userRouter.post('/signup', async (c) => {
   
   userRouter.post('/signin', async (c) => {
     const body = await c.req.json();
+    
+     const { success } = signinInput.safeParse(body);
+     if(!success){
+       c.status(411);
+       return c.json({
+         message: "Input not correct"
+       })
+     }
+
     const prisma = new PrismaClient({
       datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate())
@@ -60,9 +78,6 @@ userRouter.post('/signup', async (c) => {
           password: body.password,
         }
       })
-
-
-
   
       if(!user){
         c.status(403);
@@ -70,7 +85,6 @@ userRouter.post('/signup', async (c) => {
           message: "Incorrect creds"
         })
       }
-
   
       const jwt = await sign({
         id: user.id
@@ -85,15 +99,4 @@ userRouter.post('/signup', async (c) => {
   })
 
 
-  userRouter.get('/bulk', async(c) => {
-    const body = await c.req.json();
-    const prisma = new PrismaClient({
-      datasourceUrl: c.env.DATABASE_URL,
-    }).$extends(withAccelerate())
-  
-    const cartItem = await prisma.cartItem.findMany();
-  
-    return c.json({
-      cartItem
-    })
-  })
+ 
