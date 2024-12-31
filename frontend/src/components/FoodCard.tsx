@@ -1,19 +1,18 @@
 export const FoodCard = (props: any) => {
-    return <div className="flex justify-center shadow-none transition-shadow hover:shadow-lg hover:shadow-gray-400 border-slate-200  cursor-pointer w-96 h-96 rounded-xl m-14">
+    return  <div className="flex justify-center shadow-none transition-shadow hover:shadow-lg hover:shadow-gray-400 border-slate-200 cursor-pointer w-auto h-auto mt-10 pb-2 rounded-2xl mr-2 ">
                 <div>
-                    <img src={props.picture} className="w-72 h-52 m-9 rounded-xl"></img>
-                    <div className="flex justify-between">
+                    <img src={props.picture} className="w-72 h-52 m-2 rounded-2xl"></img>
+                    <div className="flex justify-between ">
                         <div>
                             <div className="ml-10 font-bold">{props.description}</div>
-                            <div className="ml-10 text-sm font-light">Rs.250 per serving</div>
+                            <div className="ml-10 text-sm text-gray-500">Rs.250 per serving</div>
                         </div>
                         <div>
-                            <div className=" flex justify-center border rounded-md border-black text-sm w-10 mb-1 mr-10 bg-red-700 text-white font-light">n-veg</div>      
+                            <div className=" flex justify-center border rounded-xl p-2 bg-red-700 border-white text-xl mr-7 font-light"></div>      
                         </div>
-                    </div>
-                    
+                    </div>  
                 </div>
-           </div>
+            </div>
 }
 
 

@@ -25,21 +25,20 @@ export const Food =() => {
 
     ]
 
-    return<div className="">
-            <Navbar />
-            <HomeNavbar/>
-            <div className="bg-gray-50 pl-20 pr-20">
-            
-            <div className="grid justify-center  grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {
-                data.map((dat) => (
-                    <Link to={`/item`} ><FoodCard picture = {dat.picture} description = {dat.description} /></Link>     
-                ))
-            }
-            
+    return  <div>
+                <Navbar />
+                <HomeNavbar/>
+                <div className="bg-gray-50 pr-24 pl-24 md:pr-52 md:pl-52 lg:pr-80 lg:pl-80">
+                    <div className="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                        {data.map((dat) => (
+                            <Link to={`/item`} >
+                                <FoodCard picture = {dat.picture} description = {dat.description} />
+                            </Link>     
+                        ))
+                        }
+                    </div>
+                </div>
             </div>
-            </div>
-      </div>
 }
   
 

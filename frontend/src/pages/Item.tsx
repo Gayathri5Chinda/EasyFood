@@ -38,7 +38,7 @@ export const Item = () => {
                         <div className=' text-4xl text-bold'>{food.name}</div>
                         <div className='text-sm text-gray-500'>weight: {food.weight}</div>
                         </div>
-                        <button onClick={handleClick} className='text-black border border-black bg-pink-500 pl-4 pr-4  m-4 p-2 rounded-2xl'>Add to Cart</button>
+                        <button onClick={handleClick} className='text-black border border-black bg-red-600 pl-4 pr-4  m-4 p-2 rounded-3xl'>Add to Cart</button>
                         </div>
                         <img className='w-[40rem] h-[25rem] pt-1 rounded-xl' src={food.image} alt={food.name} />
                         
@@ -48,7 +48,7 @@ export const Item = () => {
         {foodAttributes.map(([key, value], index) => (
           <span
             key={index}
-            className="inline-block px-6 py-2 border border-gray-400 text-gray-900 rounded-full shadow-sm text-md"
+            className="inline-block px-6 py-2 border bg-gray-100 border-gray-400 text-gray-900 rounded-full shadow-sm text-md"
           >
             {key}: {value}
           </span>
